@@ -2,8 +2,11 @@ import React from 'react'
 import { Button, Input, Layout, Text } from '@ui-kitten/components'
 import { ScrollView, useWindowDimensions } from 'react-native'
 import { Icon } from '../../components'
+import { useNavigation } from '@react-navigation/native'
+import { NavHook } from '../../types'
 
 export const LoginScreen = () => {
+   const navigation = useNavigation<NavHook>()
 
    const { height } = useWindowDimensions()
 
@@ -47,7 +50,10 @@ export const LoginScreen = () => {
 
             <Layout style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}>
                <Text> Do you haven't  account ?</Text>
-               <Text status={ 'primary' } category={ 's1'} onPress={() =>{}}  > Create account </Text>
+               <Text status={ 'primary' } category={ 's1'} onPress={() => navigation.reset({
+                  index: 0,
+                  routes: [ { name: 'Register' } ]
+               })} > Create account </Text>
             </Layout>
 
          </ScrollView>
