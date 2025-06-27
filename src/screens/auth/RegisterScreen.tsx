@@ -3,7 +3,7 @@ import React from 'react'
 import { ScrollView, StyleSheet, useWindowDimensions } from 'react-native'
 import { Icon } from '../../components'
 import { useNavigation } from '@react-navigation/native'
-import { NavHook } from '../../types'
+import { NavHook } from '../../infrastructure'
 
 export const RegisterScreen = () => {
    

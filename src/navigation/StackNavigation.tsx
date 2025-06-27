@@ -1,5 +1,5 @@
 import {createNativeStackNavigator, } from '@react-navigation/native-stack';
-import { RootStackParam, SettingsNavigation } from '../types';
+import { RootStackParam, SettingsNavigation } from '../infrastructure';
 import { enableScreens } from 'react-native-screens';
 import { HomeScreen, LoadingScreen, LoginScreen, RegisterScreen } from '../screens';
 
@@ -14,7 +14,7 @@ export const StackNavigation = () => {
    }
 
    return (
-      <Stack.Navigator initialRouteName='Register' screenOptions={ settings }>
+      <Stack.Navigator initialRouteName='Login' screenOptions={ settings }>
          <Stack.Screen options={{ animation: 'fade' }} name='Home'     component={ HomeScreen } />
          <Stack.Screen options={{ animation: 'fade'  }} name='Login'    component={ LoginScreen } />
          <Stack.Screen options={{ animation: 'fade'  }} name='Register' component={ RegisterScreen } />
