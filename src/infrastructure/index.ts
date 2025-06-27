@@ -6,9 +6,12 @@ export type {
 } from "./interface/Navigation"
 
 export type {
-   AuthUserResponse
+   AuthUserResponse,
+   loginReturn
 } from "./interface/AuthUserResponse"
 
 export type {
-   AuthStatus
+   AuthStatus,
 } from "./interface/AuthStatus"
+
+

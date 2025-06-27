@@ -14,7 +14,7 @@ export const StackNavigation = () => {
    }
 
    return (
-      <Stack.Navigator initialRouteName='Login' screenOptions={ settings }>
+      <Stack.Navigator initialRouteName='Loading' screenOptions={ settings }>
          <Stack.Screen options={{ animation: 'fade' }} name='Home'     component={ HomeScreen } />
          <Stack.Screen options={{ animation: 'fade'  }} name='Login'    component={ LoginScreen } />
          <Stack.Screen options={{ animation: 'fade'  }} name='Register' component={ RegisterScreen } />

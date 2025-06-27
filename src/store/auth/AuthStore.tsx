@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { User } from "../../domain";
 import { AuthStatus } from "../../infrastructure";
 import * as AuthActions from "../../actions";
+import { StorageAdapter } from "../../config";
 
 export interface AuthState {
    token?: string;
@@ -9,6 +10,9 @@ export interface AuthState {
    status: AuthStatus
 
    login: ( email: string, password: string ) => Promise<boolean>;
+   // logout: () => Promise<boolean>;
+   checkStatus: () => Promise<boolean>;
+
 }
 
 const Starter = create<AuthState>()
@@ -28,8 +32,26 @@ export const useAuthStore =  Starter( (set, get) => ({
 
       const { user, token } = data
 
+      await StorageAdapter.setItem( "token", token )
+
       set({ user, token, status: 'authenticated' })
 
       return true
+   },
+   checkStatus: async () => {
+      const data = await AuthActions.checkStatus();
+
+      if (!data) {
+         set({ user: undefined, token: undefined, status: 'unauthenticated' })
+         return false
+      }
+
+      const { user, token } = data
+
+      await StorageAdapter.setItem( "token", token )
+
+      set({ user, token, status: 'authenticated' })
+
+      return true  
    }
 }) )

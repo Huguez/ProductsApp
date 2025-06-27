@@ -1,15 +1,10 @@
 import { tesloApi } from "../../config";
-import { User } from "../../domain";
-import { AuthUserResponse } from "../../infrastructure";
+import { returnUserToken } from "../../helpers";
+import { AuthUserResponse, loginReturn } from "../../infrastructure";
 
 interface Props {
    email:    string;
    password: string;
-}
-
-interface loginReturn {
-   user: User;
-   token: string;
 }
 
 export const login = async ( { email, password }: Props ): Promise<loginReturn | null> => {
@@ -23,20 +18,5 @@ export const login = async ( { email, password }: Props ): Promise<loginReturn |
    } catch (error) {
       console.log( error );
       return null
-   }
-}
-
-const returnUserToken = (data: AuthUserResponse ) => {
-   const user: User = {
-      id: data.id,
-      email: data.email,
-      fullName: data.fullName,
-      isActive: data.isActive,
-      roles: [ ...data.roles ]
-   }
-
-   return {
-      user, 
-      token: data.token
    }
 }

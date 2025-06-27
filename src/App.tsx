@@ -5,6 +5,7 @@ import { IonIconsPack, WrapSafe } from "./components";
 import { StackNavigation } from "./navigation";
 import { ApplicationProvider, IconRegistry, } from '@ui-kitten/components';
 import { useColorScheme } from 'react-native';
+import { AuthProvider } from './providers';
 
 
 
@@ -49,7 +50,9 @@ function App() {
                 }
               },
             } }>
-              <StackNavigation />
+              <AuthProvider>
+                <StackNavigation />
+              </AuthProvider>
             </NavigationContainer>
           </WrapSafe>
         </SafeAreaProvider>
