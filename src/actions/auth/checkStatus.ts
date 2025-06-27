@@ -4,7 +4,7 @@ import { AuthUserResponse, loginReturn } from "../../infrastructure";
 
 export const checkStatus = async (): Promise<loginReturn | null> => {
    try {
-      const { data } = await tesloApi.post<AuthUserResponse>( '/auth/check-status' )
+      const { data } = await tesloApi.get<AuthUserResponse>( '/auth/check-status' )
 
       return returnUserToken( data )
    } catch (error) {

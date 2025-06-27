@@ -3,12 +3,15 @@ import { Button, Icon, Layout, Text } from '@ui-kitten/components'
 import React, { useState } from 'react'
 import { NavHook } from '../infrastructure'
 import { useAuthStore } from '../store'
+import { getProducts } from '../actions'
 
 
 export const HomeScreen = () => {
    const [ isPosting, setIsPosting ] = useState<boolean>( false )
    const navigation = useNavigation<NavHook>()
    const { logout } = useAuthStore()
+
+   getProducts()
 
    const onClick = async () => {
       setIsPosting( true )

@@ -7,8 +7,6 @@ import { ApplicationProvider, IconRegistry, } from '@ui-kitten/components';
 import { useColorScheme } from 'react-native';
 import { AuthProvider } from './providers';
 
-
-
 function App() {
   const colorScheme = useColorScheme()
   const theme = colorScheme === 'dark' ? eva.dark : eva.light
