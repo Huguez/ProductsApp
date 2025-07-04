@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors } from '../theme';
 import { Layout } from '@ui-kitten/components';
 
 interface props {
@@ -10,7 +9,7 @@ interface props {
 export const WrapSafe = ( { children }: props ) => {
 
    const { left, right, top, bottom } =  useSafeAreaInsets()
-   const edge = 15;
+   const edge = 10;
 
    const margins = { 
       marginTop: top, 

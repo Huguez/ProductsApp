@@ -7,8 +7,6 @@ export const getProducts = async ( page: number = 0, limit: number = 20): Promis
          params: { limit, offset: page*10 }
       } )
       
-      console.log( data );
-
       return data ? [
          ...data.map( ( p: Product ) => (({ ...p, images: p.images.map( (i: string) => `${ ENDPOINT }/files/product/${ i }` )})) )
       ] : []

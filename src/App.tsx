@@ -1,11 +1,15 @@
 import * as eva from '@eva-design/eva';
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { useColorScheme } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ApplicationProvider, IconRegistry, } from '@ui-kitten/components';
 import { IonIconsPack, WrapSafe } from "./components";
 import { StackNavigation } from "./navigation";
-import { ApplicationProvider, IconRegistry, } from '@ui-kitten/components';
-import { useColorScheme } from 'react-native';
 import { AuthProvider } from './providers';
+
+
+const queryClient = new QueryClient()
 
 function App() {
   const colorScheme = useColorScheme()
@@ -14,7 +18,7 @@ function App() {
   const background = ( colorScheme === 'dark' ) ?  theme["color-basic-800"] : theme["color-basic-100"]
 
   return (
-    <>
+    <QueryClientProvider client={ queryClient } >
       <IconRegistry icons={IonIconsPack} />
       <ApplicationProvider {...eva} theme={ theme }>
         <SafeAreaProvider>
@@ -55,7 +59,7 @@ function App() {
           </WrapSafe>
         </SafeAreaProvider>
       </ApplicationProvider>
-    </>
+    </QueryClientProvider>
   );
 }
 

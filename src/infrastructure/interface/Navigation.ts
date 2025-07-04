@@ -14,7 +14,7 @@ export type RootStackParam = {
    Register: undefined;
 }
 
-export type NavHook = NavigationProp<RootStackParam>
 
+export type NavHook = NavigationProp<RootStackParam>
 
 export type SettingsNavigation = NativeStackNavigationOptions | ((props: NavProps ) => NativeStackNavigationOptions) | undefined;
