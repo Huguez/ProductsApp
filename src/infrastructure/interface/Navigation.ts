@@ -12,6 +12,7 @@ export type RootStackParam = {
    Loading:  undefined;
    Login:    undefined;
    Register: undefined;
+   Product: { productId: string }
 }
 
 

@@ -15,9 +15,10 @@ export type {
 } from "./interface/AuthStatus"
 
 
-export type {
-   Products,
-   Product,
+export {
+   type Products,
+   type Product,
    Size,
+   Gender
 } from "./interface/ProductsResponse"
 

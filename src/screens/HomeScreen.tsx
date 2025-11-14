@@ -5,7 +5,7 @@ import { NavHook } from '../infrastructure'
 import { useAuthStore } from '../store'
 import { getProducts } from '../actions'
 import { useInfiniteQuery, } from '@tanstack/react-query'
-import { FullScreenLoader, MainLayout, ProductsList } from '../components'
+import { FAB, FullScreenLoader, MainLayout, ProductsList } from '../components'
 
 
 export const HomeScreen = () => {
@@ -33,19 +33,19 @@ export const HomeScreen = () => {
       setIsPosting( false )
    }
 
-   return (
+   return <>
       <MainLayout 
          title={'E-Commerce - Products'} subtitle={'Home'}
          rightAction={()=>{}}
          rightActionIcon={ 'add-outline' }
-      >
+         >
 
          {
             isLoading ? 
             <FullScreenLoader /> : 
             <ProductsList
-               products={ data?.pages.flat() ?? [] } 
-               fetchNextPage={ fetchNextPage }
+            products={ data?.pages.flat() ?? [] } 
+            fetchNextPage={ fetchNextPage }
             />
          }
 
@@ -56,5 +56,6 @@ export const HomeScreen = () => {
          </Button>
 
       </MainLayout>
-   )
+      <FAB iconName='add-outline' style={ { position: 'absolute', bottom: 50, left: 0 } } onPress={ () => navigation.navigate('Product', { productId: 'new' }) } />
+   </>
 }

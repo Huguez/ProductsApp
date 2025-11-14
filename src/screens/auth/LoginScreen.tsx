@@ -6,9 +6,11 @@ import { useNavigation } from '@react-navigation/native'
 import { NavHook } from '../../infrastructure'
 import { useAuthStore } from '../../store'
 
+import { EMAIL, PASSWORD } from '@env';
+
 const initValue = {
-  email: "",
-  password: ""
+  email: EMAIL,
+  password: PASSWORD
 }
 
 export const LoginScreen = () => {

@@ -1,7 +1,7 @@
 import {createNativeStackNavigator, } from '@react-navigation/native-stack';
 import { RootStackParam, SettingsNavigation } from '../infrastructure';
 import { enableScreens } from 'react-native-screens';
-import { HomeScreen, LoadingScreen, LoginScreen, RegisterScreen } from '../screens';
+import { HomeScreen, LoadingScreen, LoginScreen, ProductScreen, RegisterScreen } from '../screens';
 
 enableScreens();
 
@@ -18,6 +18,8 @@ export const StackNavigation = () => {
          <Stack.Screen options={{ animation: 'fade' }} name='Home'     component={ HomeScreen } />
          <Stack.Screen options={{ animation: 'fade'  }} name='Login'    component={ LoginScreen } />
          <Stack.Screen options={{ animation: 'fade'  }} name='Register' component={ RegisterScreen } />
+         <Stack.Screen options={{ animation: 'fade'  }} name='Product' component={ ProductScreen } />
+         
          <Stack.Screen name='Loading'  component={ LoadingScreen } />
       </Stack.Navigator>
    )

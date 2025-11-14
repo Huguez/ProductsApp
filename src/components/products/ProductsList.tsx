@@ -13,7 +13,7 @@ interface Props {
 export const ProductsList = ( { products, fetchNextPage }: Props ) => {
 
    const [ isRefreshing, setIsRefreshing ] = useState<boolean>( false )
-
+   
    const onPullToRefresh = async () => {
       setIsRefreshing( true )
 
