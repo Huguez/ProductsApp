@@ -7,7 +7,7 @@ export const updateProduct = async ( product: Partial<Product> ) => {
    try {
       const { id, images, ...rest } = product
 
-      const checkedImages = prepareImages( images ?? [] )
+      const checkedImages = await prepareImages( images ?? [] )
 
       const resp = await tesloApi.patch( `/products/${ id }`, {
          images: checkedImages,

@@ -6,7 +6,6 @@ import Icon from "@react-native-vector-icons/ionicons"
 interface Props extends PropsWithChildren{
    title:    string;
    subtitle: string;
-
    rightAction?: () => void;
    rightActionIcon?: any;
 }
@@ -31,7 +30,7 @@ export const MainLayout = ({ title, subtitle, rightAction, rightActionIcon, chil
       return (
          <TopNavigationAction
             onPress={ rightAction }
-            icon={ <Icon name={ rightActionIcon } size={ 30 } /> }
+            icon={ <Icon name={ rightActionIcon } size={ 25 } /> }
          />
       )
    }

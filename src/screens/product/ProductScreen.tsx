@@ -7,6 +7,7 @@ import { Gender, Product, RootStackParam, Size } from "../../infrastructure"
 import { FlatList, Image, ScrollView } from "react-native"
 import { Button, Input, Layout, } from "@ui-kitten/components"
 import { Formik } from "formik"
+import { CameraAdapter } from "../../config"
 
 interface Props extends NativeStackScreenProps<RootStackParam, 'Product'> {}
 
@@ -51,6 +52,7 @@ export const ProductScreen = ( { route }: Props ) => {
       />
    )
 
+
    return (
       <Formik
          initialValues={ data }
@@ -58,7 +60,21 @@ export const ProductScreen = ( { route }: Props ) => {
       >
          {
             ({ handleChange, handleSubmit, values, errors, setFieldValue }) => (
-               <MainLayout title={ values.title  } subtitle={ `Price: $${ data?.price.toFixed(2) }`  }>
+               <MainLayout 
+                  title={ values.title }
+                  subtitle={ `Price: $${ data?.price.toFixed(2) }`  }
+                  rightAction={ async () => {
+                     try {   
+                        // const photo = await CameraAdapter.takePicture()
+                        const photo = await CameraAdapter.getPictureFromLibrary()
+                        setFieldValue( 'images', [ ...values.images, ...photo ] )
+                        console.log( photo );
+                     } catch (error) {
+                        console.log( error );
+                     }
+                  } }
+                  rightActionIcon={ 'image-outline' }
+               >
                   <ScrollView style={{ flex: 1 }}>
                      
                      <Layout style={{ marginVertical: 10, justifyContent: 'center', alignItems: 'center' }} >
